@@ -48,6 +48,8 @@
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 
+
+
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
@@ -74,6 +76,15 @@
         </div>
       </div>
     </form>
+    <!-- Erick -->
+    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="dist/img/erick.jpg" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          <a href="#" class="d-block">Erick Murai</a>
+        </div>
+      </div>
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
