@@ -50,9 +50,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 $route['default_controller'] = 'Home';
+$route['home'] = 'Home';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 
 $route['laboratorios']['get'] = 'Laboratorios';
 $route['reservas']['get'] = 'Reservas';
+$route['reservascalendario']['get'] = 'Reservas/reservasCalendario';
+$route['reservascalendario/(:any)']['get']   = 'Reservas/reservasCalendarioDia/$1';
+$route['reservascalendario']['post']   = 'Reservas/reservasCalendarioDiaSalvar';
