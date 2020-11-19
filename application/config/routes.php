@@ -57,6 +57,10 @@ $route['translate_uri_dashes'] = FALSE;
 
 $route['laboratorios']['get'] = 'Laboratorios';
 $route['reservas']['get'] = 'Reservas';
+
 $route['reservascalendario']['get'] = 'Reservas/reservasCalendario';
 $route['reservascalendario/(:any)']['get']   = 'Reservas/reservasCalendarioDia/$1';
 $route['reservascalendario']['post']   = 'Reservas/reservasCalendarioDiaSalvar';
+
+$route['login']['post']  = 'Login/login';
+
