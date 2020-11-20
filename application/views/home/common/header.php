@@ -58,7 +58,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="/" class="nav-link">Home</a>
+        <a href="/home" class="nav-link">Início</a>
       </li>
      
     </ul>
@@ -129,7 +129,7 @@
       <!-- Notifications Dropdown Menu -->
       <li class="nav-item dropdown  ">
         <a class="nav-link" data-toggle="dropdown" href="#">
-           <img style="width:30px" src="/dist/img/cido.jpg" class="img-circle elevation-2" alt="User Image">
+           <img style="width:30px; height:30px" src="/dist/img/<?php echo ($this->session->get_userdata()['foto']); ?>" class="img-circle elevation-2" alt="User Image">
           
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">

@@ -14,8 +14,8 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item has-treeview menu-open">
-            <a href="reservas" class="nav-link active">
+          <li class="nav-item has-treeview">
+            <a href="reservas" class="nav-link">
               <i class="fas fa-home"></i>
               <p>
                 Home

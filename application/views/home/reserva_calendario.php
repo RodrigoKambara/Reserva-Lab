@@ -9,7 +9,7 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="/">Ínicio</a></li>
+              <li class="breadcrumb-item"><a href="/home">Início</a></li>
               <li class="breadcrumb-item active">Calendário de reservas</li>
             </ol>
           </div>

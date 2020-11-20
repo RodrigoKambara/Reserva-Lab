@@ -31,7 +31,8 @@ class Login extends CI_Controller {
                 'usuarioId'  => $data['usuarioId'],
                 'professorId'  => $data['professorId'],
                 'email'     => $data['email'],
-                'nome'     => $data['usuario']
+                'nome'     => $data['usuario'],
+                'foto'     => $data['foto']
             );
 
 
