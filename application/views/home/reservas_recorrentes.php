@@ -5,12 +5,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Reserva simples</h1>
+          <h1>Reserva Recorrente</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Reserva simples</li>
+            <li class="breadcrumb-item active">Reserva Recorrente</li>
           </ol>
         </div>
       </div>
@@ -28,6 +28,8 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body">
+
+
               <table id="example2" class="table table-bordered table-hover">
                 <thead>
                   <tr>
@@ -36,8 +38,9 @@
                     <th>Professor</th>
                     <th>Disciplina</th>
                     <th>Turma</th>
-                    <th>Ínicio</th>
-                    <th>Fim</th>
+                    <th>Dia</th>
+                    <th>Horário</th>
+                    <th></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -48,8 +51,13 @@
                       <td><?=$reserva->professor?></td>
                       <td><?=$reserva->disciplina?></td>
                       <td><?=$reserva->turma?></td>
-                      <td><?=$reserva->inicio?></td>
-                      <td><?=$reserva->fim?></td>
+                       <td><?=DIAS_SEMANA[$reserva->diaRecorrente]?></td>
+                      <td><?=(date('H', strtotime($reserva->inicio)) < 21)? '1°':'2°' ?></td>
+                      <td class="text-center">
+                         <i class="fas fa-eye"></i> 
+                         <i class="fas fa-edit"></i> 
+                         <i class="fas fa-trash-alt"></i> 
+                      </td>
                     </tr>
                   <?php } ?>
                 </tfoot>
@@ -71,7 +79,7 @@
   <!-- /.content -->
 
 
-  <form action="/reservascalendario" method="post">
+  <form action="/reservarecorrente" method="post">
     <div class="modal fade" id="modal-reserva">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -109,20 +117,9 @@
 
 
             <div class="row">
+
               <div class="col-sm-4">
                 <!-- select -->
-                <div class="form-group">
-                  <label>Turma</label>
-                  <select name="turmaId" class="form-control">
-                    <option selected="selected" disabled="disabled">Selecione a turma..</option>
-                    <?php  foreach ($turmas as $turma) { ?>
-                      <option value="<?=$turma->turmaId?>"><?=$turma->nome?></option>
-                    <?php } ?>
-                  </select>
-                </div>
-              </div>
-
-              <div class="col-md-4">
                 <div class="form-group">
                   <label>Bloco</label>
                   <select name="blocoId" class="form-control">
@@ -135,22 +132,19 @@
               </div>
 
               <div class="col-sm-4">
+                <!-- select -->
                 <div class="form-group">
-                  <label>Horários</label>
-                  <select class="form-control" name="inicio" >
-                    <option selected="selected" disabled="disabled">Selecione um horário..</option>
-                    <option value="<?=$dia?> 19:00">1° horário 19:00 às 20:40</option>
-                    <option value="<?=$dia?> 21:00">2° horário 21:00 às 22:30</option>
+                  <label>Turma</label>
+                  <select name="turmaId" class="form-control">
+                    <option selected="selected" disabled="disabled">Selecione a turma..</option>
+                    <?php  foreach ($turmas as $turma) { ?>
+                      <option value="<?=$turma->turmaId?>"><?=$turma->nome?></option>
+                    <?php } ?>
                   </select>
                 </div>
               </div>
-            </div>
+              <div class="col-sm-4">
 
-
-
-            <div class="row">
-              <div class="col-sm-6">
-                <!-- select -->
                 <div class="form-group">
                   <label>Laboratórios</label>
                   <select name="laboratorioId" class="form-control">
@@ -160,32 +154,77 @@
                     <?php } ?>
                   </select>
                 </div>
-              </div>
-              <div class="col-sm-6">
 
-                <div class="form-group">
-                  <label>Tipo da reserva</label>
 
-                  <div class="form-check">
-                    <input class="form-check-input" name="tipo-reserva" type="radio">
-                    <label class="form-check-label">Aula</label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" name="tipo-reserva" type="radio" checked="">
-                    <label class="form-check-label">Treinamento</label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" name="tipo-reserva" type="radio" >
-                    <label class="form-check-label">Prova</label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" name="tipo-reserva" type="radio" >
-                    <label class="form-check-label">Palestra</label>
-                  </div>
-                </div>
+
 
               </div>
             </div>
+
+
+
+            <div class="row">
+
+              <div class="col-sm-6">
+
+                <div class="form-group">
+                  <label>Dias da semana</label>
+
+                  <div class="form-check">
+                    <input class="form-check-input" name="diaRecorrente" type="radio" value="1">
+                    <label class="form-check-label">Segunda-feira</label>
+                  </div>
+                  
+                  <div class="form-check">
+                    <input class="form-check-input" name="diaRecorrente" type="radio" value="2">
+                    <label class="form-check-label">Terça-feira</label>
+                  </div>
+
+                  <div class="form-check">
+                    <input class="form-check-input" name="diaRecorrente" type="radio" value="3">
+                    <label class="form-check-label">Quarta-feira</label>
+                  </div>
+
+                  <div class="form-check">
+                    <input class="form-check-input" name="diaRecorrente" type="radio" value="4">
+                    <label class="form-check-label">Quinta-feira</label>
+                  </div>
+
+                  <div class="form-check">
+                    <input class="form-check-input" name="diaRecorrente" type="radio" value="5">
+                    <label class="form-check-label">Sexta-feira</label>
+                  </div>
+ 
+                </div>
+
+              </div>
+
+
+              <div class="col-sm-6">
+                <!-- select -->
+                <div class="form-group">
+                  <label>Horários</label>
+                  
+                  <div class="form-check">
+                    <input value="<?=$dia?> 19:00" class="form-check-input" name="inicio" type="radio">
+                    <label class="form-check-label">1° horário 19:00 às 20:40</label>
+                  </div>
+                  <div class="form-check">
+                    <input value="<?=$dia?> 21:00" class="form-check-input" name="inicio" type="radio">
+                    <label class="form-check-label">2° horário 21:00 às 22:30</label>
+                  </div>
+                    
+                  
+                 
+                </div>
+              </div>
+
+
+
+
+            </div>
+
+
 
           </div>
           <div class="modal-footer justify-content-between">
@@ -199,5 +238,10 @@
     </div>
     <!-- /.modal -->
   </form>
+
+
+
+
+
 
 </div>

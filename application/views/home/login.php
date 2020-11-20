@@ -24,18 +24,22 @@
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
-
+<style>
+  body{
+    color:#eee;
+  }
+</style>
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-<body class="hold-transition login-page">
+<body class="hold-transition login-page" style="background:#343a40">
 <div class="login-box">
-  <div class="login-logo">
-    <a href="../../index2.html"><b>Reserva</b>Lab</a>
+  <div class="login-logo text-center">
+    <img src="/dist/img/ReserLab.png" alt="">
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
-    <p class="login-box-msg">Sign in to start your session</p>
+    <p class="login-box-msg">Informe suas credencias de acesso.</p>
 
     <form action="/login" method="post">
       <div class="form-group has-feedback">
@@ -47,25 +51,19 @@
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="row">
-        <div class="col-xs-8">
-          <div class="checkbox icheck">
-            <label>
-              <input type="checkbox"> Remember Me
-            </label>
-          </div>
+        <div class="col-md-12 text-center">
+          <button type="submit" class="btn   btn-success btn-flat">Entrar</button>
         </div>
-        <!-- /.col -->
-        <div class="col-xs-4">
-          <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+        <br>
+        <div class="col-md-12 text-center">
+          <br>
+          <?=$message ?? ''?>
         </div>
-        <!-- /.col -->
       </div>
     </form>
     <!-- /.social-auth-links -->
 
-    <a href="#">I forgot my password</a><br>
-    <a href="register.html" class="text-center">Register a new membership</a>
-
+ 
   </div>
   <!-- /.login-box-body -->
 </div>

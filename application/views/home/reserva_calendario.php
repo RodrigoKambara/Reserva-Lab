@@ -116,7 +116,9 @@
       //Random default events
       events    : [
 
-        <?php foreach ($reservas as $reserva) {  ?>
+        <?php foreach ($reservas as $reserva) { 
+            if($reserva->diaRecorrente == 0){
+         ?>
         {
           title          : '<?=$reserva->disciplina?>',
           start          : new Date('<?=date( 'Y-m-d H:i', strtotime($reserva->inicio) )?>'),
@@ -124,21 +126,34 @@
           backgroundColor: '#f56954', //red
           borderColor    : '#f56954', //red
           allDay         : false,
-          url: 'http://stackoverflow.com/'
+          url: '',
+          recorrente: false
+
         },
-        <?php } ?>
+        <?php } else{  ?>
+        {
+          title          : '<?=$reserva->disciplina?>',
+          startTime          : new Date('<?=date( 'H:i', strtotime($reserva->inicio) )?>'),
+          endTime            : new Date('<?=date( 'H:i', strtotime($reserva->fim) )?>'),
+          backgroundColor: '#007bff', //red
+          borderColor    : '#007bff', //red
+          allDay         : false,
+          daysOfWeek: ['<?=$reserva->diaRecorrente?>'],
+          recorrente:true
+        },
+        <?php } }?>
         
       ],
 
       eventClick: function(event) {
       if (event.url) {
-      window.open(event.url, "_blank");
+      //window.open(event.url, "_blank");
       return false;
       }
       },
 
-      dateClick: function(info) {
-      window.location.href = 'reservascalendario/'+info.dateStr;
+      dateClick: function(info) { 
+       window.location.href = 'reservascalendario/'+info.dateStr;
       // alert('Clicked on: ' + info.dateStr);
       // alert('Coordinates: ' + info.jsEvent.pageX + ',' + info.jsEvent.pageY);
       // alert('Current view: ' + info.view.type);

@@ -7,12 +7,15 @@ class Permission
        $ci->load->helper('language');
 
        $usuario = $ci->session->get_userdata('');
-       
-       $public_notalowed = ['Admin'];
-       $user_notalowed = ['AdminMaster'];
-   
 
-       //Rules
+       $public_notalowed = ['home','reservas','dashboard','reservascalendario','laboratorios'];
+
+     
+       
+        if(!isset($usuario['usuarioId']) && in_array(strtolower($ci->router->class), $public_notalowed) ){
+        redirect(site_url('/login'), 'refresh');
+        die;
+       }
  
    }
 }

@@ -19,33 +19,38 @@ class Login extends CI_Controller {
     public function login(){
 
         $usuario    = $this->input->post('usuario',TRUE);
-        //$password = md5($this->input->post('password',TRUE));
-        $senha =  $this->input->post('senha',TRUE);
+        $senha = md5($this->input->post('senha',TRUE));
+
         $validate = $this->usuarios->validate($usuario,$senha);
+
+        
         if($validate->num_rows() > 0){
             $data  = $validate->row_array();
 
             $sesdata = array(
                 'usuarioId'  => $data['usuarioId'],
+                'professorId'  => $data['professorId'],
                 'email'     => $data['email'],
-                
-
+                'nome'     => $data['usuario']
             );
 
 
             $this->session->set_userdata($sesdata);
 
 
-            redirect(site_url('/'), 'refresh');
+            redirect(site_url('/home'), 'refresh');
 
         }else{
 
             $dados['message'] = 'Dados Incorretos.';
         }
 
-        $this->load->view('home/common/header');
         $this->load->view('home/login',$dados);
-        $this->load->view('home/common/footer');
+    }
+
+    public function logout(){
+        $this->session->userdata = [];
+        redirect('/');
     }
  
 }
