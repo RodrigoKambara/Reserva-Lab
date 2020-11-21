@@ -27,7 +27,7 @@ class Reservas extends CI_Controller {
 	{
 
 		$filtros['professor'] = $this->session->get_userdata()['professorId'];
-
+		$dados['disciplinas'] = $this->disciplinas->disciplinas();
 		$dados['reservas'] = $this->reservas->reservas($filtros);
 		 
 		$this->load->view('home/common/header');

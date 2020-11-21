@@ -24,6 +24,23 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
+                <div class="row">
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <label>Disciplinas</label>
+                      <select class="form-control">
+                      <?php  foreach ($disciplinas as $disciplina) { ?>
+                      <option value="<?=$disciplina->disciplinaId?>"><?=$disciplina->nome?></option>
+                      <?php } ?>
+                      </select>
+                    </div>
+                  </div>
+                
+                  <div class="col-sm-9">
+                  </div>
+ 
+                </div>
+
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -37,6 +54,7 @@
                     <th>Turma</th>
                     <th>Ínicio</th>
                     <th>Fim</th>
+                    <th></th>
                   </tr>
                   </thead>
                   <tbody>
@@ -49,6 +67,11 @@
                     <td><?=$reserva->turma?></td>
                     <td><?=$reserva->inicio?></td>
                     <td><?=$reserva->fim?></td>
+                    <td class="text-center">
+                    <i class="fas fa-eye"></i> 
+                    <i class="fas fa-edit"></i> 
+                    <i class="fas fa-trash-alt"></i> 
+                    </td>
                   </tr>
                    <?php } ?>
                   </tfoot>

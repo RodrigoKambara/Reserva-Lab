@@ -24,7 +24,37 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <button type="button" data-toggle="modal" data-target="#modal-reserva" class="btn btn-block btn-success btn-sm pull-right" style="width: auto;float: right;">Agendar</button>
+
+                <div class="row">
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <label>Bloco</label>
+                      <select class="form-control">
+                        <option>Bloco 1</option>
+                        <option>Bloco 2</option>
+                        <option>Bloco 3</option>
+                        <option>Bloco 4</option>
+                        <option>Bloco 5</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <label>Período</label>
+                      <select class="form-control">
+                      <option value="<?=$dia?> 19:00">1° horário 19:00 às 20:40</option>
+                      <option value="<?=$dia?> 21:00">2° horário 21:00 às 22:30</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                  </div>
+
+                  <div class="col-md-2">
+                    <button type="button" data-toggle="modal" data-target="#modal-reserva" class="btn btn-block btn-success btn-sm pull-right" style="width: auto;float: right;">Agendar</button>
+                  </div>
+                </div>
+       
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -40,7 +70,6 @@
                     <th>Turma</th>
                     <th>Dia</th>
                     <th>Horário</th>
-                    <th></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -53,11 +82,6 @@
                       <td><?=$reserva->turma?></td>
                        <td><?=DIAS_SEMANA[$reserva->diaRecorrente]?></td>
                       <td><?=(date('H', strtotime($reserva->inicio)) < 21)? '1°':'2°' ?></td>
-                      <td class="text-center">
-                         <i class="fas fa-eye"></i> 
-                         <i class="fas fa-edit"></i> 
-                         <i class="fas fa-trash-alt"></i> 
-                      </td>
                     </tr>
                   <?php } ?>
                 </tfoot>

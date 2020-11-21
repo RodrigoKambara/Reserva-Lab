@@ -24,6 +24,26 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
+
+                <div class="row">
+                  <div class="col-sm-3">
+                      <!-- checkbox -->
+                      <div class="form-group">
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox">
+                          <label class="form-check-label">Bloco 7</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" checked="">
+                          <label class="form-check-label">Bloco 10</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox"  ">
+                          <label class="form-check-label">Bloco 11</label>
+                        </div>
+                      </div>
+                    </div>
+                </div>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
